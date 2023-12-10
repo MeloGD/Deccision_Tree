@@ -21,6 +21,8 @@ CSVReader::getFields(void) {
   return fields_vector_;
 }
 
+// hay que añadir la limpieza de flags y el set a la linea 0 en esta
+// funcion y corregirla. Ej: Funcion anterior --> 78 y 79
 std::vector<std::string> 
 CSVReader::extractRowByIndex(const int index) {
   std::vector<std::string> row_vector;
@@ -30,7 +32,10 @@ CSVReader::extractRowByIndex(const int index) {
 
   while (getline(file_ , line)) {
     count++;
-    if (index == 0) {
+    if (index == 0 || index >= columns_number_ + 2) {
+      std::cout << "\nIndex is out of boundaries\n";
+      file_.clear();
+      file_.seekg(0);
       break;
     } else if (index == count) {
         line_buffer << line;
@@ -40,9 +45,13 @@ CSVReader::extractRowByIndex(const int index) {
         line_buffer.str("");
         line_buffer.clear();  
         rows_number = row_vector.size();
+        file_.clear();
+        file_.seekg(0);
         return row_vector;
       }
   }
+  file_.clear();
+  file_.seekg(0);
 }
 
 std::vector<std::string> 
@@ -75,6 +84,8 @@ CSVReader::extractColumnByField(std::string field) {
       auxiliar_vector.clear();
     }
   }
+  file_.clear();
+  file_.seekg(0);
   columns_number_ = column_vector.size();
   return column_vector;  
 }
