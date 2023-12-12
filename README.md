@@ -1,4 +1,4 @@
-# Deccision tree o árbol de clasificación desarrollado en C++.
+# Decision tree o árbol de clasificación desarrollado en C++.
 
 A falta de hacer un makefile para gestionar el proyecto, se puede utilizar por ejemplo desde src :  
 `g++ -std=c++14 -Wall -g main.cpp csv_reader.cpp -o ../bin/output`
@@ -10,6 +10,6 @@ A falta de hacer un makefile para gestionar el proyecto, se puede utilizar por e
 - Hace un recuento de todas las distintas categorías, por ejemplo, nº de personas estado unidenses, dentro de un campo o columna.
 
 ## TODO:
-  - Crear una clase que herede desde "binary tree" llamada "deccision tree".
+  - Crear una clase que herede desde "binary tree" llamada "decision tree".
   - Escoger una estrategia de ramificación, dado que hay categorías que constan de más de dos posibilidades.
   - Diseñar una función que calcule los valores de entriopía.
